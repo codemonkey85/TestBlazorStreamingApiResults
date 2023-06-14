@@ -5,13 +5,13 @@
 </h1>
 
 <button @onclick="@GetAllTodosAsync">
-    Get Todos
+    Get Todos (@_todos.Count)
 </button>
 
-@if (TodosService.Todos is { Count: > 0 })
+@if (_todos is { Count: > 0 })
 {
     <ul>
-        @foreach (var todo in TodosService.Todos)
+        @foreach (var todo in _todos)
         {
             <li>
                 @todo.Title

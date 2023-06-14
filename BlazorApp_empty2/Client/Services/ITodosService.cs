@@ -2,7 +2,5 @@
 
 public interface ITodosService
 {
-    List<Todo> Todos { get; set; }
-
-    Task GetAllTodosAsync();
+    IAsyncEnumerable<Todo> GetAllTodosAsync();
 }
