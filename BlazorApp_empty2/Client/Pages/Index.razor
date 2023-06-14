@@ -1,0 +1,21 @@
+﻿@page "/"
+
+<h1>
+    Hello, world!
+</h1>
+
+<button @onclick="@GetAllTodosAsync">
+    Get Todos
+</button>
+
+@if (TodosService.Todos is { Count: > 0 })
+{
+    <ul>
+        @foreach (var todo in TodosService.Todos)
+        {
+            <li>
+                @todo.Title
+            </li>
+        }
+    </ul>
+}
