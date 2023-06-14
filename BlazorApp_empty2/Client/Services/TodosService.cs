@@ -4,12 +4,8 @@ public record TodosService(HttpClient HttpClient) : ITodosService
 {
     private const string BaseUrl = "api/todos";
 
-    public List<Todo> Todos { get; set; } = new();
-
-    public async Task GetAllTodosAsync()
+    public async IAsyncEnumerable<Todo> GetAllTodosAsync()
     {
-        Todos.Clear();
-
         using var response = await HttpClient.GetAsync(BaseUrl);
         response.EnsureSuccessStatusCode();
 
@@ -23,7 +19,8 @@ public record TodosService(HttpClient HttpClient) : ITodosService
             }
 
             Console.WriteLine(todo.Title);
-            Todos.Add(todo);
+            yield return todo;
+
             await Task.Delay(100);
         }
     }
