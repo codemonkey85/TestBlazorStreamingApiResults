@@ -1,1 +1,3 @@
-# BlazorApp_empty2
+# TestBlazorStreamingApiResults
+
+Testing Blazor streaming API results
